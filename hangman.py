@@ -42,8 +42,8 @@ def restart():
         else:
             restart()
 
-def double_check():         #überprüft ob das "guess" nochmal irgendwo im Wort vorkommt. 
-    if guess in toGuess:      #Ausgelagert, damit "no" nicht danach geprintet wird
+def double_check():         #checks if the "guess" appears another time in the word
+    if guess in toGuess:      #in an own function so that the "no" is not printed after the filled in letters
         place = toGuess.index(guess)
         lineDraw[place] = guess
         toGuess[place] = "_"
@@ -54,7 +54,7 @@ def double_check():         #überprüft ob das "guess" nochmal irgendwo im Wort
         guessing()
 
 def checker(): 
-    global state     #checkt ob der guess in der Liste vom Word2 ist
+    global state     #checks if guess is in the list of Word2
     if guess in toGuess:
         double_check()
     else:
@@ -83,8 +83,8 @@ def set_word():
     print("word")
 
 
-def drawHangman(state):
-    if state == 1:
+def drawHangman(state):                                     #visualisations of the hangman for printin
+    if state == 1:                                          #for printing in the console
         print("\nYou've got "+str(10-state)+" trys left!")
         print("""
     
