@@ -1,18 +1,12 @@
 import random
 import sys
 
-global words
-global wrongs
-global toGuess
-global lineDraw
-global state
-
 state = 0
 wrongs = 0
-words = ["apple", "banana", "lamp", "hello"]
+words = ["apple", "banana", "peach", "cherrys", "grapes", "lamp", "bed", "desk", "computer", "headset"]
 lineDraw= []
 
-def gameloop():
+def gameloop():     #filles the reference list "toGuess" with "_"'s according to the length of the word which needs to be guessed
     global toGuess
     which = random.randint(0, int(len(words)-1))
     toGuess = list(words[which])
@@ -21,7 +15,7 @@ def gameloop():
     print(lineDraw)
     guessing()
 
-def restart():
+def restart():              #resets the important game variables or quits the console when"choice" equals "no"
         choice = input("Wanna Restart?(ye/no) ")
         if choice == "ye":
             global words
@@ -62,13 +56,13 @@ def checker():
         drawHangman(state)
         guessing()
 
-def guessing():
+def guessing():     #gets the input from the letter and saves it inside "guess"
     global place
     global guess
     guess = input("Guess a letter: ")
     checker()
 
-def check_win():
+def check_win():     #if the reference list is completely filled with "_" the game is won
     so = 0
     for i in toGuess:
         if i == "_":
@@ -79,12 +73,8 @@ def check_win():
     else:
         double_check()
 
-def set_word():
-    print("word")
-
-
-def drawHangman(state):                                     #visualisations of the hangman for printin
-    if state == 1:                                          #for printing in the console
+def drawHangman(state):                                     #visualisations of the hangman for printing in the console
+    if state == 1:                                          
         print("\nYou've got "+str(10-state)+" trys left!")
         print("""
     
